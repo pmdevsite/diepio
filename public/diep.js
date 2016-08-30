@@ -17,6 +17,20 @@ var sketchProc = function(processingInstance) {
 
         var leaderboard = [];
 
+        var hideGrid = false;
+
+        /** Colors **/
+        var colors = {
+            square: color(255,232,105),
+            triangle: color(252,118,119),
+            pentagon: color(118,141,252),
+            tank_red: color(241,78,84),
+            tank_blue: color(0,178,225),
+            tank_green: color(76,233,153),
+            tank_purple: color(191,127,245),
+            tank_barrel: color(153,153,153)
+        };
+
         /** Outline Text **/
         var textOutline = function(t, x, y, w, h, fc, sc, o) {
             fill(sc);
@@ -148,7 +162,7 @@ var sketchProc = function(processingInstance) {
             rotate(this.r);
             stroke(85);
             strokeWeight(3);
-            fill(255, 232, 105);
+            fill(colors.square);
             rect(-this.d / 2, -this.d / 2, this.d, this.d);
             popMatrix();
         };
@@ -186,7 +200,7 @@ var sketchProc = function(processingInstance) {
             rotate(this.r);
             stroke(85);
             strokeWeight(3);
-            fill(252, 118, 119);
+            fill(colors.triangle);
             triangle(0, 0 - this.d / 1.25, 0 - this.d, 0 + this.d, 0 + this.d, 0 + this.d);
             popMatrix();
         };
@@ -224,7 +238,7 @@ var sketchProc = function(processingInstance) {
             rotate(this.r);
             stroke(85);
             strokeWeight(3);
-            fill(118, 141, 252);
+            fill(colors.pentagon);
             beginShape();
             vertex(0, 0 - this.d / 2);
             vertex(0 + this.d / 2, 0 - this.d / 8);
@@ -299,10 +313,10 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-8.75, 5, 17.5, 35);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -312,11 +326,11 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-19.75, 0, 17.5, 35);
                     rect(1.4, 0, 17.5, 35);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -326,10 +340,10 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-8.75, -35, 17.5, 75);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -339,11 +353,11 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     //use a quad()
                     quad(-10, 0, 10, 0, 17.5, 37.5, -17.5, 37.5);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -353,10 +367,10 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-8.75, 5, 17.5, 42);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -366,7 +380,7 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rotate(45);
                     rect(-8.75, 5, 17.5, 35);
                     rotate(-90);
@@ -374,7 +388,7 @@ var sketchProc = function(processingInstance) {
                     rotate(45);
                     rect(-8.75, 5, 17.5, 35);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -384,11 +398,11 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-19.75, -38, 17.5, 75);
                     rect(1.4, -38, 17.5, 75);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -398,7 +412,7 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-8.75, 5, 17.5, 35);
                     rotate(90);
                     rect(-8.75, 5, 17.5, 35);
@@ -407,7 +421,7 @@ var sketchProc = function(processingInstance) {
                     rotate(90);
                     rect(-8.75, 5, 17.5, 35);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -417,14 +431,14 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-8.75, 5, 17.5, 39);
                     rotate(150);
                     rect(-8.75, 5, 17.5, 35);
                     rotate(60);
                     rect(-8.75, 5, 17.5, 35);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -434,11 +448,11 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-13.80, 5, 27.5, 35);
                     this.stats.bulletSize = 31;
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -448,14 +462,14 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-19.75, 8, 9, 25);
                     rect(-10.4, 8, 9, 30);
                     rect(-1.4, 8, 9, 30);
                     rect(10.4, 8, 9, 25);
                     this.stats.bulletSize = 12;
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -465,10 +479,10 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-10, 5, 19.5, 55);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -478,7 +492,7 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rotate(20);
                     stroke(62);
                     strokeWeight(2.5);
@@ -486,7 +500,7 @@ var sketchProc = function(processingInstance) {
                     rotate(180);
                     triangle(25, 23, -3, 33, 0, 0);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -496,12 +510,12 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-9.75, 5, 18.5, 48);
                     rect(-11.75, 5, 22.5, 42);
 
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -511,12 +525,12 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-18.75, 5, 17.5, 30);
                     rect(0.75, 5, 17.5, 30);
                     rect(-8.75, 5, 17.5, 35);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -526,7 +540,7 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rotate(45);
                     rect(-8.75, 5, 17.5, 27);
                     rotate(-90);
@@ -539,7 +553,7 @@ var sketchProc = function(processingInstance) {
                     rotate(20);
                     rect(-8.75, 5, 17.5, 37);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -549,7 +563,7 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-19.75, 5, 17.5, 33);
                     rect(1.5, 5, 17.5, 33);
                     rotate(120);
@@ -559,7 +573,7 @@ var sketchProc = function(processingInstance) {
                     rect(-19.75, 5, 17.5, 33);
                     rect(1.5, 5, 17.5, 33);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -569,13 +583,13 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     for (var i = 0; i < 360; i += 45) {
                         rotate(i);
                         rect(-8.75, 5, 17.5, 35);
                     }
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -589,7 +603,7 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-8.75, 5, 17.5, 36);
                     rotate(90);
                     rect(-8.75, -35, 17.5, 70);
@@ -598,7 +612,7 @@ var sketchProc = function(processingInstance) {
                     rotate(65);
                     rect(-8.75, 5, 17.5, 30);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -634,7 +648,7 @@ var sketchProc = function(processingInstance) {
                     rotate(90);
                     triangle(25, 23, -3, 33, 1, 3);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -644,7 +658,7 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     //use a quad()
                     rotate(20);
                     stroke(62);
@@ -652,7 +666,7 @@ var sketchProc = function(processingInstance) {
                     triangle(25, 23, -5, 33, 0, 0);
                     rotate(180);
                     triangle(25, 23, -3, 33, 0, 0);
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     rotate(-20);
                     rect(-18.75, -20, 40, 40);
                     popMatrix();
@@ -664,12 +678,12 @@ var sketchProc = function(processingInstance) {
                     pushMatrix();
                     translate(this.pos.x, this.pos.y);
                     rotate(atan2(mouseY-this.screeny, mouseX-this.screenx) - HALF_PI);
-                    fill(153);
+                    fill(colors.tank_barrel);
                     rect(-9.75, 5, 18.5, 48);
                     rect(-11.75, 5, 22.5, 42);
                     rect(-13.75, 5, 26.5, 36);
                     popMatrix();
-                    fill(0, 178, 225);
+                    fill(colors.tank_blue);
                     ellipse(this.pos.x, this.pos.y, this.d, this.d);
                     break;
 
@@ -704,10 +718,10 @@ var sketchProc = function(processingInstance) {
             this.pos.x = constrain(this.pos.x, 0, world.w);
             this.pos.y = constrain(this.pos.y, 0, world.h);
 
-            var r = atan2(mouseY - height / 2, mouseX - width / 2)/* + (-width + -height / 2))*/;
+            var r = atan2(mouseY - height / 2, mouseX - width / 2);
             //var bulletCount=0;
             //if(bullets.length===0){
-                //bulletCount=0;
+            //    bulletCount=0;
             //}
             if (this.shooting && this.reloadTime === 0) {
                 //bulletCount+=1;
@@ -721,12 +735,12 @@ var sketchProc = function(processingInstance) {
 
                     case "twin": //WIP
                         if(bullets.length%2===0){
-                            bullets.push(new Bullet(new PVector(this.pos.x, this.pos.y), new PVector(cos(r), sin(r)), this.stats.bulletSpeed, this.stats.bulletSize, this.stats.bulletDamage, this.stats.bulletPenetration));
+                            bullets.push(new Bullet(new PVector(this.pos.x-TWO_PI-TWO_PI, this.pos.y), new PVector(cos(r), sin(r)), this.stats.bulletSpeed, this.stats.bulletSize, this.stats.bulletDamage, this.stats.bulletPenetration));
                         } else {
-                            bullets.push(new Bullet(new PVector(this.pos.x, this.pos.y), new PVector(cos(r), sin(r)), this.stats.bulletSpeed, this.stats.bulletSize, this.stats.bulletDamage, this.stats.bulletPenetration));
+                            bullets.push(new Bullet(new PVector(this.pos.x+TWO_PI+TWO_PI, this.pos.y), new PVector(cos(r), sin(r)), this.stats.bulletSpeed, this.stats.bulletSize, this.stats.bulletDamage, this.stats.bulletPenetration));
                         }
                         this.reloadTime = this.stats.reload;
-                        lastMS = millis() - startMS + this.stats.reload * 100;
+                        lastMS = millis() - startMS + this.stats.reload * 50;
                         break;
 
                     case "flankGuard":
@@ -755,7 +769,7 @@ var sketchProc = function(processingInstance) {
 
                         break;
 
-                    case "quadTank": //WIP
+                    case "quadTank":
 
                         break;
 
@@ -928,6 +942,8 @@ var sketchProc = function(processingInstance) {
             textSize(32.5);
             textOutline(this.tracking.stats.name.join(""), width / 2, height - 80, 0, 0, color(240), color(61), 3.5);
 
+
+
             /* Leaderboard */
             for (var i = 0; i < 10; i += 1) {
 
@@ -951,32 +967,32 @@ var sketchProc = function(processingInstance) {
 
         };
         var collisions = function() {
-            for(var b=0; b<bullets.length; b++){
-                /* Squares Collisions */
-                for(var i=0; i<squares.length-1; i++){
-                    if (collideWith(player, squares[i])) {
-                        squares[i].defence-=player.stats.bodyDamage;
-                        if(player.velocity.x>0){
-                            player.velocity.div(1.3,1.3);
-                            squares[i].velocity.add(1,0);
-                            squares[i].pos.add(10,0);
-                        }
-                        if(player.velocity.x<0){
-                            player.velocity.div(1.3,1.3);
-                            squares[i].velocity.sub(1,0);
-                            squares[i].pos.sub(10,0);
-                        }
-                        if(player.velocity.y<0){
-                            player.velocity.div(1.3,1.3);
-                            squares[i].velocity.sub(0,1);
-                            squares[i].pos.sub(0,10);
-                        }
-                        if(player.velocity.y>0){
-                            player.velocity.div(1.3,1.3);
-                            squares[i].velocity.add(0,1);
-                            squares[i].pos.add(0,10);
-                        }
+            /* Squares Collisions */
+            for(var i=0; i<squares.length; i++){
+                if (collideWith(player, squares[i])) {
+                    squares[i].defence-=player.stats.bodyDamage;
+                    if(player.velocity.x>0){
+                        player.velocity.div(1.3,1.3);
+                        squares[i].velocity.add(1,0);
+                        squares[i].pos.add(10,0);
                     }
+                    if(player.velocity.x<0){
+                        player.velocity.div(1.3,1.3);
+                        squares[i].velocity.sub(1,0);
+                        squares[i].pos.sub(10,0);
+                    }
+                    if(player.velocity.y<0){
+                        player.velocity.div(1.3,1.3);
+                        squares[i].velocity.sub(0,1);
+                        squares[i].pos.sub(0,10);
+                    }
+                    if(player.velocity.y>0){
+                        player.velocity.div(1.3,1.3);
+                        squares[i].velocity.add(0,1);
+                        squares[i].pos.add(0,10);
+                    }
+                }
+                for(var b=0; b<bullets.length; b++){
                     if(collideWith(bullets[b],squares[i])){
                         squares[i].defence-=bullets[b].damage;
                         bullets[b].defence-=squares[i].damage;
@@ -997,36 +1013,38 @@ var sketchProc = function(processingInstance) {
                             squares[i].pos.add(0,10);
                         }
                     }
-                    if(squares[i].defence<=0){
-                        squares.splice(i,1);
+                }
+                if(squares[i].defence<=0){
+                    squares.splice(i,1);
+                }
+            }
+
+            /* Triangles Collisions */
+            for(var ib=0; ib<triangles.length; ib++){
+                if (collideWith(player, triangles[ib])) {
+                    triangles[ib].defence-=player.stats.bodyDamage;
+                    if(player.velocity.x>0){
+                        player.velocity.div(1.3,1.3);
+                        triangles[ib].velocity.add(1,0);
+                        triangles[ib].pos.add(10,0);
+                    }
+                    if(player.velocity.x<0){
+                        player.velocity.div(1.3,1.3);
+                        triangles[ib].velocity.sub(1,0);
+                        triangles[ib].pos.sub(10,0);
+                    }
+                    if(player.velocity.y<0){
+                        player.velocity.div(1.3,1.3);
+                        triangles[ib].velocity.sub(0,1);
+                        triangles[ib].pos.sub(0,10);
+                    }
+                    if(player.velocity.y>0){
+                        player.velocity.div(1.3,1.3);
+                        triangles[ib].velocity.add(0,1);
+                        triangles[ib].pos.add(0,10);
                     }
                 }
-
-                /* Triangles Collisions */
-                for(var ib=0; ib<triangles.length-1; ib++){
-                    if (collideWith(player, triangles[ib])) {
-                        triangles[ib].defence-=player.stats.bodyDamage;
-                        if(player.velocity.x>0){
-                            player.velocity.div(1.3,1.3);
-                            triangles[ib].velocity.add(1,0);
-                            triangles[ib].pos.add(10,0);
-                        }
-                        if(player.velocity.x<0){
-                            player.velocity.div(1.3,1.3);
-                            triangles[ib].velocity.sub(1,0);
-                            triangles[ib].pos.sub(10,0);
-                        }
-                        if(player.velocity.y<0){
-                            player.velocity.div(1.3,1.3);
-                            triangles[ib].velocity.sub(0,1);
-                            triangles[ib].pos.sub(0,10);
-                        }
-                        if(player.velocity.y>0){
-                            player.velocity.div(1.3,1.3);
-                            triangles[ib].velocity.add(0,1);
-                            triangles[ib].pos.add(0,10);
-                        }
-                    }
+                for(var b=0; b<bullets.length; b++){
                     if(collideWith(bullets[b],triangles[ib])){
                         triangles[ib].defence-=squares[b].damage;
                         bullets[b].defence-=triangles[ib].damage;
@@ -1047,36 +1065,38 @@ var sketchProc = function(processingInstance) {
                             triangles[ib].pos.add(0,10);
                         }
                     }
-                    if(triangles[ib].defence<=0){
-                        triangles.splice(ib,1);
+                }
+                if(triangles[ib].defence<=0){
+                    triangles.splice(ib,1);
+                }
+            }
+
+            /* Pentagons Collisions */
+            for(var ic=0; ic<pentagons.length; ic++){
+                if (collideWith(player, pentagons[ic])) {
+                    pentagons[ic].defence-=player.stats.bodyDamage;
+                    if(player.velocity.x>0){
+                        player.velocity.div(1.3,1.3);
+                        pentagons[ic].velocity.add(1,0);
+                        pentagons[ic].pos.add(10,0);
+                    }
+                    if(player.velocity.x<0){
+                        player.velocity.div(1.3,1.3);
+                        pentagons[ic].velocity.sub(1,0);
+                        pentagons[ic].pos.sub(10,0);
+                    }
+                    if(player.velocity.y<0){
+                        player.velocity.div(1.3,1.3);
+                        pentagons[ic].velocity.sub(0,1);
+                        pentagons[ic].pos.sub(0,10);
+                    }
+                    if(player.velocity.y>0){
+                        player.velocity.div(1.3,1.3);
+                        pentagons[ic].velocity.add(0,1);
+                        pentagons[ic].pos.add(0,10);
                     }
                 }
-
-                /* Pentagons Collisions */
-                for(var ic=0; ic<pentagons.length-1; ic++){
-                    if (collideWith(player, pentagons[ic])) {
-                        pentagons[ic].defence-=player.stats.bodyDamage;
-                        if(player.velocity.x>0){
-                            player.velocity.div(1.3,1.3);
-                            pentagons[ic].velocity.add(1,0);
-                            pentagons[ic].pos.add(10,0);
-                        }
-                        if(player.velocity.x<0){
-                            player.velocity.div(1.3,1.3);
-                            pentagons[ic].velocity.sub(1,0);
-                            pentagons[ic].pos.sub(10,0);
-                        }
-                        if(player.velocity.y<0){
-                            player.velocity.div(1.3,1.3);
-                            pentagons[ic].velocity.sub(0,1);
-                            pentagons[ic].pos.sub(0,10);
-                        }
-                        if(player.velocity.y>0){
-                            player.velocity.div(1.3,1.3);
-                            pentagons[ic].velocity.add(0,1);
-                            pentagons[ic].pos.add(0,10);
-                        }
-                    }
+                for(var b=0; b<bullets.length; b++){
                     if(collideWith(bullets[b],pentagons[ic])){
                         pentagons[ic].defence-=bullets[b].damage;
                         bullets[b].defence-=pentagons[ic].damage;
@@ -1097,11 +1117,12 @@ var sketchProc = function(processingInstance) {
                             pentagons[ic].pos.add(0,10);
                         }
                     }
-                    if(pentagons[ic].defence<=0){
-                        pentagons.splice(ic,1);
-                    }
                 }
-
+                if(pentagons[ic].defence<=0){
+                    pentagons.splice(ic,1);
+                }
+            }
+            for(var b=0; b<bullets.length; b++){
                 if(bullets[b].defence<=0){
                     bullets.splice(b,1);
                 }
@@ -1113,15 +1134,26 @@ var sketchProc = function(processingInstance) {
           size(window.innerWidth, window.innerHeight);
             try{
                 if (playing) {
-                    while (squares.length < world.minSquares) {
+                    if (squares.length < world.minimumSquares) {
                         squares.push(new Square(random(0, world.w), random(0, world.h)));
                     }
-                    while (triangles.length < world.minTriangles) {
+                    if (triangles.length < world.minimumTriangles) {
                         triangles.push(new Triangle(random(0, world.w), random(0, world.h)));
                     }
-                    while (pentagons.length < world.minPentagons) {
+                    if (pentagons.length < world.minimumPentagons) {
                         pentagons.push(new Pentagon(random(0, world.w), random(0, world.h)));
                     }
+
+                    if (squares.length < world.maxSquares && frameCount%150 === 25) {
+                        squares.push(new Square(random(0, world.w), random(0, world.h)));
+                    }
+                    if (triangles.length < world.maxTriangles && frameCount%150 === 25) {
+                        triangles.push(new Triangle(random(0, world.w), random(0, world.h)));
+                    }
+                    if (pentagons.length < world.maxPentagons && frameCount%150 === 25) {
+                        pentagons.push(new Pentagon(random(0, world.w), random(0, world.h)));
+                    }
+
                     switch (gameMode) {
                         case "FFA":
                             background(185); //Background Color
@@ -1129,13 +1161,15 @@ var sketchProc = function(processingInstance) {
                             mapCamera.run(); //Map Camera
                             fill(205);
                             rect(width/2,height/2,world.w-width/2,world.h-height/2);
-                            stroke(170); //Grid Background this line and the next 7 lines
-                            strokeWeight(1);
-                            for (var w = -width*2; w < world.w+width*2; w += 22.5) {
-                                line(w, 0, w, world.w);
-                            }
-                            for (var h = -height*2; h < world.h+height*2; h += 22.5) {
-                                line(0, h, world.h, h);
+                            if(hideGrid === false){
+                                stroke(170);
+                                strokeWeight(1);
+                                for (var w = -width*2; w < world.w+width*2; w += 22.5) {
+                                    line(w, 0, w, world.w);
+                                }
+                                for (var h = -height*2; h < world.h+height*2; h += 22.5) {
+                                    line(0, h, world.h, h);
+                                }
                             }
                             for (var i = 0; i < squares.length; i += 1) {
                                 squares[i].run();
@@ -1182,6 +1216,7 @@ var sketchProc = function(processingInstance) {
                         playing = true;
                     }
                 }
+                //println(__frameRate);
             }
             catch(e) {
                 println(e);
@@ -1198,12 +1233,20 @@ var sketchProc = function(processingInstance) {
 
         /** Typing Stuff **/
         var keyTyped = function() {
+            console.log(key.code);
             if (!playing) {
                 if (key.code !== BACKSPACE && player.stats.name.length < 15 && !keys[ENTER]) {
                     player.stats.name.push(key);
                 }
                 if (key.code === BACKSPACE) {
                     player.stats.name.pop();
+                }
+            }
+            if(playing){
+                if(key.code===104 && !hideGrid){
+                    hideGrid = true;
+                } else if(key.code===104 && hideGrid){
+                    hideGrid = false;
                 }
             }
         };
