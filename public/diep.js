@@ -1233,7 +1233,6 @@ var sketchProc = function(processingInstance) {
 
         /** Typing Stuff **/
         var keyTyped = function() {
-            console.log(key.code);
             if (!playing) {
                 if (key.code !== BACKSPACE && player.stats.name.length < 15 && !keys[ENTER]) {
                     player.stats.name.push(key);
