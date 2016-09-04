@@ -84,7 +84,7 @@ var sketchProc = function(processingInstance) {
             18: 1301,
             19: 1516,
             20: 1757,
-            21: 2026
+            21: 2026,
             22: 2325,
             23: 2658,
             24: 3026,
@@ -299,7 +299,6 @@ var sketchProc = function(processingInstance) {
                 name: [],
                 score: 0,
                 lvl: 1,
-                dst: 0,
             };
         };
         Player.prototype.run = function() {
@@ -851,6 +850,11 @@ var sketchProc = function(processingInstance) {
                         break;
                 }
             }
+            for(var i=0; i<45; i++){
+                if(this.stats.score>=levels[this.stats.lvl + 1]){
+                    this.stats.lvl+=1;
+                }
+            }
         };
         var player = new Player(random(0, world.w - width), random(0, world.h - height));
         leaderboard.push(player);
@@ -934,7 +938,7 @@ var sketchProc = function(processingInstance) {
             rect(width / 2 - (250 / 2) + 2, height - 58, 13.5/*+this.scoreBarLength*/, 13.5, 100);
 
             fill(240, 217, 108);
-            rect(width / 2 - (350 / 2) + 2, height - 38, 16/*+this.levelBarLength*/, 16, 100);
+            rect(width / 2 - (350 / 2) + 2, height - 38, 16+this.levelBarLength, 16, 100);
 
             textSize(11);
             textOutline("Score: " + this.tracking.stats.score, width / 2, height - 51, 0, 0, color(240), color(61), 1);
@@ -951,9 +955,8 @@ var sketchProc = function(processingInstance) {
             }
         };
         overlays.prototype.update = function() {
-            var nlvl = this.tracking.stats.lvl + 1;
-            this.scoreBarLength = 246 * this.tracking.stats.score / leaderboard[0].stats.score;
-            this.levelBarLength = 346 * this.tracking.stats.dst / levels[nlvl];
+            this.scoreBarLength = 230 * this.tracking.stats.score / leaderboard[0].stats.score;
+            this.levelBarLength = 330 * this.tracking.stats.score / levels[this.tracking.stats.lvl + 1];
         };
 
         var Overlay = new overlays(player);
@@ -1016,6 +1019,7 @@ var sketchProc = function(processingInstance) {
                     }
                 }
                 if(squares[i].defence<=0){
+                    player.stats.score+=squares[i].v;
                     squares.splice(i,1);
                 }
             }
@@ -1068,6 +1072,7 @@ var sketchProc = function(processingInstance) {
                     }
                 }
                 if(triangles[ib].defence<=0){
+                    player.stats.score+=triangles[ib].v;
                     triangles.splice(ib,1);
                 }
             }
@@ -1120,6 +1125,7 @@ var sketchProc = function(processingInstance) {
                     }
                 }
                 if(pentagons[ic].defence<=0){
+                    player.stats.score+=pentagons[ic].v;
                     pentagons.splice(ic,1);
                 }
             }
